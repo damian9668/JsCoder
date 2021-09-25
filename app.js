@@ -1,14 +1,19 @@
 
+let resultado = 0;
 
-var x, y, suma;
+for (let x=0; x=4;x++){
 
-x = prompt("Ingrese un numero");
-y = prompt("Ingrese un numero");
-
-if (isNaN(x) || isNaN(y)) {
-    alert("Es necesarios introducir dos números válidos");
-} else {
-    suma = parseFloat(x) + parseFloat(y);
-    alert("El resultado de la suma es " + suma);
+    let i = prompt("ingrese un numero");
+    if(i == "esc"){
+        break;
+    };
+    resultado = resultado + parseInt(i);
+    alert("la suma parcial es " + resultado);
+    if(x >= 3){
+        x--;
+    };
 }
+
+alert("la suma total es: " + resultado)
+
 
