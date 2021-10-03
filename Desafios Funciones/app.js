@@ -22,7 +22,7 @@ function iva2 (){
 //console.log(iva);
 
 function producto (p,i){
-    resultado=parseInt(p) * (parseInt(i)+100)/100;
+    resultado=(parseFloat(p) * (parseFloat(i)+100)/100).toFixed(2);
     alert("el precio con iva es: " + resultado);
     //return resultado;
 }
