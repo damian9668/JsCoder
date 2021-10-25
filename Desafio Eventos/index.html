@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Final</title>
+
+</head>
+<body>
+    <h1>Gestion De Alumnos</h1>
+    <form onsubmit="event.preventDefault();" id="formulario">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+
+        <label for="fecha">Fecha De Nacimiento: </label>
+        <input type="date" name="fechaDeNacimiento" id="fecha">
+
+        <label for="notas">Notas: </label>
+        <input type="text" name="notas" id="notas">
+
+        <button type="submit" id="btnAgregar"> Agregar </button>
+    </form>
+    <button type="submit" id="btnVer"> Alumnos </button>
+    <ul id="mostrar"/>
+
+    <script src="app.js"></script>
+</body>
+</html>
