@@ -20,7 +20,7 @@ function cargarAlumnos() {
     notas = notas.split(",")
 
     create(nombre, fecha, notas);
-    console.log(alumnos);
+   // console.log(alumnos);
     document.getElementById("formulario").reset();
 }
 
