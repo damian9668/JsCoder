@@ -53,8 +53,20 @@ $("#btnPrueba").click(()=>{
         method: "GET",
         url: URL,
         success: (data)=>{
-            console.log(data);
+            //console.log(data);
+            data.forEach((alumno) => {
+                $("#mostrar").append(`<div class='card col-4 m-3 mx-auto' style='width: 25rem'>
+    <div class="card-body" id="carta">
+        <h5 class="card-title"> Nombre: ${alumno.name}</h5>
+        <p class="card-text my-2"> Correo: ${alumno.email}</p>
+        <p class="card-text my-2"> Telefono: ${alumno.phone}</p>
+        <p class="card-text my-2"> Direccion: ${alumno.address.city}, ${alumno.address.street}, ${alumno.address.suite}</p>
+        <p class="card-text my-2"> Codigo Postal: ${alumno.address.zipcode}</p>
+    </div>
+</div>`);
+            });
         }
     })
+
 })
 
