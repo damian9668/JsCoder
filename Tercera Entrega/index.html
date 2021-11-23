@@ -23,9 +23,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="./index.html">Alumnos <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Profesores</a>
-            </li>
         </ul>
     </div>
 </nav>
@@ -43,17 +40,25 @@
             </div>
 
             <div class="form-group w-100 my-2">
-                <label for="fecha">Fecha De Nacimiento: </label>
-                <input type="date" name="fechaDeNacimiento" class="form-control" id="fecha">
+                <label for="correo">Correo: </label>
+                <input type="text" name="correo" class="form-control" id="correo">
             </div>
 
             <div class="form-group w-100 my-2">
-                <label for="notas">Notas: </label>
-                <input type="text" name="notas" class="form-control" id="notas">
+                <label for="telefono">Telefono: </label>
+                <input type="text" name="telefono" class="form-control" id="telefono">
+            </div>
+            <div class="form-group w-100 my-2">
+                <label for="direccion">Dirección: </label>
+                <input type="text" name="direccion" class="form-control" id="direccion">
+            </div>
+            <div class="form-group w-100 my-2">
+                <label for="codigo">Codigo Postal: </label>
+                <input type="text" name="codigo" class="form-control" id="codigo">
             </div>
 
             <button type="submit" id="btnAgregar" class="btn btn-primary w-50 my-2"> Agregar</button>
-            <button type="submit" id="btnVer" class="btn btn-primary w-50 my-2"> Alumnos</button>
+
         </form>
     </div>
 
@@ -61,6 +66,9 @@
 <div id="mostrar" class="row"></div>
 <div class="alert alert-primary hide " role="alert" id="alerta">
     Alumno Agregado Correctamente
+</div>
+<div class="alert alert-danger hide " role="alert" id="alerta2">
+    Alumno No Agregado
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -8,3 +8,10 @@
     width: 300px;
     text-align: center;
 }
+#alerta2{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    text-align: center;
+}
