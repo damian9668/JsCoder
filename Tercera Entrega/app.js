@@ -1,11 +1,12 @@
 const URL = "https://jsonplaceholder.typicode.com/users";
+
 class Alumno {
     constructor(nombre, correo, telefono, direccion, codigo) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.codigo = codigo;
+        this.name = nombre;
+        this.email = correo;
+        this.phone = telefono;
+        this.address = direccion;
+        this.zipcode = codigo;
     }
 }
 
@@ -43,20 +44,19 @@ function cargarAlumnos() {
 }
 
 function verAlumnos() {
-    
+
     $("#mostrar").empty();
     alumnos.forEach((alumno) => {
         $("#mostrar").prepend(`<div class='card col-4 m-3 mx-auto' style='width: 25rem'>
     <div class="card-body" id="carta">
-        <h5 class="card-title"> Nombre: ${alumno.nombre}</h5>
-        <p class="card-text my-2"> Correo: ${alumno.correo}</p>
-        <p class="card-text my-2"> Telefono: ${alumno.telefono}</p>
-        <p class="card-text my-2"> Direccion: ${alumno.direccion}</p>
-        <p class="card-text my-2"> Codigo Postal: ${alumno.codigo}</p>
+        <h5 class="card-title"> Nombre: ${alumno.name}</h5>
+        <p class="card-text my-2"> Correo: ${alumno.email}</p>
+        <p class="card-text my-2"> Telefono: ${alumno.phone}</p>
+        <p class="card-text my-2"> Direccion: ${alumno.address}</p>
+        <p class="card-text my-2"> Codigo Postal: ${alumno.zipcode}</p>
     </div>
 </div>`);
     });
-    alumnosApi();
 }
 
 function alumnosApi(){
@@ -66,16 +66,9 @@ function alumnosApi(){
         success: (data)=>{
             //console.log(data);
             data.forEach((alumno) => {
-                $("#mostrar").append(`<div class='card col-4 m-3 mx-auto' style='width: 25rem'>
-    <div class="card-body" id="carta">
-        <h5 class="card-title"> Nombre: ${alumno.name}</h5>
-        <p class="card-text my-2"> Correo: ${alumno.email}</p>
-        <p class="card-text my-2"> Telefono: ${alumno.phone}</p>
-        <p class="card-text my-2"> Direccion: ${alumno.address.city}, ${alumno.address.street}, ${alumno.address.suite}</p>
-        <p class="card-text my-2"> Codigo Postal: ${alumno.address.zipcode}</p>
-    </div>
-</div>`);
+                alumnos.push(new Alumno(alumno.name, alumno.email, alumno.phone, alumno.address.city +", "+ alumno.address.street + ", " + alumno.address.suite, alumno.address.zipcode));
             });
+            verAlumnos();
         }
     })
 };
