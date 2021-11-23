@@ -72,7 +72,7 @@ function alumnosApi(){
             //console.log(data);
             data.forEach((alumno) => {
                 let notas = Array.from({length: 3}, () => {
-                    let nota = Math.floor(Math.random() * 10)
+                    let nota = Math.floor(Math.random() * 11)
                     if (nota === 0) {
                         return 1;
                     } else {
