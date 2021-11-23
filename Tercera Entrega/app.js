@@ -1,20 +1,21 @@
 const URL = "https://jsonplaceholder.typicode.com/users";
 
 class Alumno {
-    constructor(nombre, correo, telefono, direccion, codigo) {
+    constructor(nombre, correo, telefono, direccion, codigo, notas) {
         this.name = nombre;
         this.email = correo;
         this.phone = telefono;
         this.address = direccion;
         this.zipcode = codigo;
+        this.notas = notas
     }
 }
 
 const alumnos = [];
 
-const create = (nombre, correo, telefono, direccion, codigo) => {
+const create = (nombre, correo, telefono, direccion, codigo, notas) => {
 
-    alumnos.push(new Alumno(nombre, correo, telefono, direccion, codigo));
+    alumnos.push(new Alumno(nombre, correo, telefono, direccion, codigo, notas));
 }
 
 function cargarAlumnos() {
@@ -23,9 +24,12 @@ function cargarAlumnos() {
     let telefono = $("#telefono").val();
     let direccion = $("#direccion").val();
     let codigo = $("#codigo").val();
+    let notas = $("#notas").val();
+
+    notas = notas.split(",")
 
 
-    if(!nombre || !correo || !telefono || !direccion || !codigo){
+    if(!nombre || !correo || !telefono || !direccion || !codigo || notas[0]===""){
         $("#alerta2").fadeIn("slow",function() {
             setTimeout(function () {
                 $("#alerta2").fadeOut("slow");
@@ -33,7 +37,7 @@ function cargarAlumnos() {
         })
         return;
     }
-    create(nombre, correo, telefono, direccion, codigo);
+    create(nombre, correo, telefono, direccion, codigo, notas);
     //console.log(alumnos);
     $("#formulario").trigger('reset');
     $("#alerta").fadeIn("slow",function() {
@@ -54,6 +58,7 @@ function verAlumnos() {
         <p class="card-text my-2"> Telefono: ${alumno.phone}</p>
         <p class="card-text my-2"> Direccion: ${alumno.address}</p>
         <p class="card-text my-2"> Codigo Postal: ${alumno.zipcode}</p>
+        <p class="card-text my-2"> Notas: ${alumno.notas}</p>
     </div>
 </div>`);
     });
@@ -66,7 +71,15 @@ function alumnosApi(){
         success: (data)=>{
             //console.log(data);
             data.forEach((alumno) => {
-                alumnos.push(new Alumno(alumno.name, alumno.email, alumno.phone, alumno.address.city +", "+ alumno.address.street + ", " + alumno.address.suite, alumno.address.zipcode));
+                let notas = Array.from({length: 3}, () => {
+                    let nota = Math.floor(Math.random() * 10)
+                    if (nota === 0) {
+                        return 1;
+                    } else {
+                        return nota
+                    }
+                });
+                alumnos.push(new Alumno(alumno.name, alumno.email, alumno.phone, alumno.address.city +", "+ alumno.address.street + ", " + alumno.address.suite, alumno.address.zipcode, notas));
             });
             verAlumnos();
         }
